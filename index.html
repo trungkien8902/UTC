@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log In</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="icon" type="image/png" href="/images/logo_icon.png">
+</head>
+<body>
+
+  <!-- ------header------- -->
+  <section class="header">
+      <nav>
+          <a href="index.html">
+              <img src="https://sis.utc.edu.vn/logo.png" alt="">
+          </a>
+      </nav>
+  </section>
+
+  <!-- ------- login ------- -->
+  <section class="main">
+
+  <!-- -------sign in------- -->
+      <form action="" method="POST" class="form" id="form-1">
+        <h3 class="heading">Đăng nhập</h3>
+
+        <div class="spacer"></div>
+
+        <div class="form-group">
+          <label for="email" class="form-label">Tài khoản</label>
+          <input id="email" name="email" type="text" placeholder="VD: email@domain.com" class="form-control">
+          <span class="form-message"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="password" class="form-label">Mật khẩu</label>
+          <input id="password" name="password" type="password" placeholder="Nhập mật khẩu" class="form-control">
+          <span class="form-message"></span>
+        </div>
+        
+        <button class="form-submit">Đăng nhập</button>
+
+        <div id="sign-up">
+          <a href="#form-2" onclick="Click()">Đăng ký tài khoản</a>
+        </div> 
+      </form>
+
+  <!-- -------sign up------- -->
+      <form action="#" method="POST" class="form" id="form-2">
+        <h3 class="heading">Đăng ký</h3>
+        <p class="desc">Vui lòng điền thông tin để đăng ký</p>
+  
+        <div class="spacer"></div>
+  
+        <div class="form-group">
+          <label for="fullname" class="form-label">Họ và tên</label>
+          <input id="fullname" name="fullname" type="text" placeholder="Nhập họ và tên" class="form-control">
+          <span class="form-message"></span>
+        </div>
+  
+        <div class="form-group">
+          <label for="email" class="form-label">Email</label>
+          <input id="email" name="email" type="text" placeholder="Nhập email" class="form-control">
+          <span class="form-message"></span>
+        </div>
+  
+        <div class="form-group">
+          <label for="password" class="form-label">Mật khẩu</label>
+          <input id="password" name="password" type="password" placeholder="Nhập mật khẩu" class="form-control">
+          <span class="form-message"></span>
+        </div>
+  
+        <div class="form-group">
+          <label for="password_confirmation" class="form-label">Nhập lại mật khẩu</label>
+          <input id="password_confirmation" name="password_confirmation" placeholder="Nhập lại mật khẩu" type="password" class="form-control">
+          <span class="form-message"></span>
+        </div>
+  
+        <button class="form-submit">Đăng ký</button>
+      </form>
+  </section>
+
+</body>
+  <script src="/main.js"></script>
+  <script>
+    // ---- form 1 ----
+    document.addEventListener('DOMContentLoaded', function () {
+      Validator({
+        form: '#form-1',
+        formGroupSelector: '.form-group',
+        errorSelector: '.form-message',
+        rules: [
+          Validator.isEmail('#email'),
+          Validator.minLength('#password', 6),
+        ]
+      });
+    });
+
+    // ---- form 2 ----
+    document.addEventListener('DOMContentLoaded', function () {
+      Validator({
+        form: '#form-2',
+        formGroupSelector: '.form-group',
+        errorSelector: '.form-message',
+        rules: [
+          Validator.isRequired('#fullname', 'Vui lòng nhập tên đầy đủ của bạn'),
+          Validator.isEmail('#email'),
+          Validator.minLength('#password', 6),
+          Validator.isRequired('#password_confirmation'),
+          Validator.isConfirmed('#password_confirmation', function () {
+            return document.querySelector('#form-2 #password').value;
+          }, 'Mật khẩu nhập lại không chính xác')
+        ]
+      });
+    });
+
+    // ------ show sign up ------
+    const signUp = document.querySelectorAll('#sign-up') 
+    const form1 = document.querySelector('#form-1')
+    const form2 = document.querySelector('#form-2')
+
+    function showSignUp(){
+      form2.classList.add('open')
+    } 
+    function hideSignIn(){
+      form1.classList.add('close')
+    }
+    for(const click of signUp) {
+      click.addEventListener('click', showSignUp)
+      click.addEventListener('click', hideSignIn)
+    }
+  </script>
+
+</html>
+
+
+
+
+
+
+

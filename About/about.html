@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UTC</title>
+    <link rel="stylesheet" type="text/css" href="style_about.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+</head>
+
+<script type="text/javascript">
+ 
+    function fntChange(a){
+        console.log(a);
+        if(a == ''){
+            document.getElementById('fname').style.border = 'solid red 1px';
+            document.getElementById('fname').title ='Vui lòng nhập tên';
+            //document.getElementById('errName').style.display = 'block';
+        }else{
+            document.getElementById('errName').style.display = 'none';
+        }
+        
+    }
+    function validateField(){
+       var firstName =  document.getElementById('fname').value;
+       var lastName = document.getElementById('lname').value;
+       if(firstName == ''){
+            document.getElementById('fname').style.border = 'solid red 1px';
+            document.getElementById('fname').title ='Vui lòng nhập họ';
+            return;
+       }else{
+            document.getElementById('fname').style.border = 'solid black 1px';
+            document.getElementById('fname').title ='';
+       }
+       if(lastName == ''){
+            document.getElementById('lname').style.border = 'solid red 1px';
+            document.getElementById('lname').title ='Vui lòng nhập tên';
+            return;
+       }else{
+            document.getElementById('lname').style.border = 'solid black 1px';
+            document.getElementById('lname').title ='';
+       }
+       alert('Bạn đã đăng ký thành công');
+    }
+
+    function showAl(){
+        confirm('Bạn đã đăng kí thành công.')
+    }
+</script>
+<body>
+    <section class="header">
+        <nav>
+            <a href="index.html">
+                <img src="https://sis.utc.edu.vn/logo.png" alt="">
+            </a>
+            <div class="nav-links" id="navLinks">
+                <ul>
+                    <li ><a href="">home</a></li>
+                    <li title="home laf nha"><a href="">about</a></li>
+                    <li><a href="">course</a></li>
+                    <li><a href="">blog</a></li>
+                    <li><a href="">contact</a></li>
+
+                </ul>
+            </div>
+            <i class="fa fa-bars" onclick="showMenu()"></i>
+        </nav>
+        <h1>About Us</h1>
+    </section>
+
+    <!-- -----about----- -->
+
+    <section class="about-us">
+       <div class="row">
+       		<div class="about-col-2">
+       			<h1>Các câu lạc bộ của chúng tôi</h1>
+		        <p>Không chỉ chú trọng về học tập, các kỹ năng và mối quan hệ của sinh viên cũng được trường quan tâm.  
+                    Việc duy trì một thói quen hoạt động thể chất đều đặn, tránh lối sống tĩnh tại có thể mang lại nhiều 
+                    lợi ích cho sức khỏe, hỗ trợ điều trị bệnh bên cạnh việc sử dụng thuốc, tạo một lối sống tích cực 
+                    và nâng cao chất lượng cuộc sống. Vì vậy chúng tôi đã tạo ra các câu lạc bộ thể thao, tin học, tình nguyện, tuyên truyền,...</p>
+		        <a href="index.html" target="blank"><button class="hero-btn red-btn">EXPLORE NOW</button></a>
+	       	</div>
+	        <div class="about-col-2">
+	        	<img src="../images/about.jpg" alt="">
+	        </div>
+	        
+       </div>
+  
+    </section>
+    <hr>
+    <section class="form">
+        <table class="table1">
+            <thead>
+                <tr>
+                    <th style="font-size: 24px; text-align:center;">Đăng kí thành viên.</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <label style="padding-left: 120px;" for="fname">Họ & Tên:</label>
+                        <input style="width: 40%;" onblur="fntChange(this.value);" onchange="fntSetLastName(this.value)" type="text" placeholder="" id="fname">
+                    </td>
+                </tr>
+                <tr id='errName' hidden="hidden">
+                    <td>
+                        <label style="padding-left: 16px;" for="fname"></label>
+                        <label style="padding-left: 16px;" ><font color="red">Vui lòng nhập tên.</font></label>
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td>
+                        <label style="padding-left: 128px;" for="lname">Tên CLB:</label>
+                        <input style="width: 40%;" onblur="fntChange(this.value);" onchange="fntSetLastName(this.value)" type="text" placeholder="" id="lname">
+                    </td>
+                </tr>
+                <tr id='errName' hidden="hidden">
+                    <td>
+                        <label style="padding-left: 16px;" for="lname"></label>
+                        <label style="padding-left: 16px;" ><font color="red">Vui lòng nhập họ.</font></label>
+                    </td>
+                </tr>
+                <tr>
+                <tr>
+                    <td>
+                        <label style="padding-left: 130px;" for="">Gender:</label>
+                              <input type="radio" name="gender"> male
+                              <input type="radio" name="gender"> female
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <button class="sm-btn" onclick="validateField(); showAl();" type="submit">Save</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+            
+    <section class="footer">
+        <h1>THEO DÕI UTC</h1>
+        <p>Theo dõi trường qua các kênh mạng xã hội sau để được cập nhật các thông tin mới nhất</p>
+
+        <div class="icons">
+            <a href="https://www.facebook.com/" target="blank"><i class="fab fa-facebook"></i></a>
+            <i class="fab fa-google"></i>
+            <i class="fab fa-linkedin"></i>
+            <i class="fab fa-twitter"></i>
+            <p>&copy; Made by team 3</p>
+        </div>
+    </section>
+</body>
+</html>
